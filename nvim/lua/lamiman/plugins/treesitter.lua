@@ -31,7 +31,6 @@ return {
         "lua",
         "r",
         "markdown",
-        "latex",
         "json",
         "yaml",
         "toml",

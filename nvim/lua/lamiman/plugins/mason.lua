@@ -7,6 +7,7 @@ return {
     -- Error handling for required modules
     local status_mason, mason = pcall(require, "mason")
     if not status_mason then
+
       vim.notify("Failed to load mason", vim.log.levels.ERROR)
       return
     end
@@ -18,6 +19,7 @@ return {
     end
 
     -- Setup Mason with custom UI icons
+
     mason.setup({
       ui = {
         icons = {
@@ -28,17 +30,18 @@ return {
       },
     })
 
+
     -- Ensure specific LSP servers are installed, including Go
     mason_lspconfig.setup({
       ensure_installed = {
         "rust_analyzer",     -- Rust
-        "clangd",            -- C/C++
-        "zls",               -- Zig
-        "pyright",           -- Python
         "lua_ls",            -- Lua
+        "jdtls",             -- Java
         "marksman",          -- Markdown
+        "texlab",
       },
       automatic_installation = true, -- Automatically install LSP servers if not already installed
     })
+
   end,
 }

@@ -18,14 +18,17 @@ return {
     -- load vscode style snippets from friendly-snippets
     require("luasnip.loaders.from_vscode").lazy_load()
 
+
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
       snippet = {
+
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
+
       },
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -40,8 +43,10 @@ return {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
+
           elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
+
           else
             fallback()
           end
@@ -49,13 +54,16 @@ return {
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
       sources = cmp.config.sources({
+
         { name = "nvim_lsp",        max_item_count = 10 },
         { name = "luasnip",         max_item_count = 10 },
         { name = "buffer",          max_item_count = 10 },
         { name = "path",            max_item_count = 10 },
         { name = "render-markdown", max_item_count = 10 },
+
       }),
       experimental = {
+
         ghost_text = true,
       },
       formatting = {
@@ -75,4 +83,3 @@ return {
     })
   end,
 }
-
