@@ -102,6 +102,12 @@ keymap("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 keymap("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 keymap("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 
+keymap("n", "<leader>mp", function()
+  require("conform").format({
+    async = true,
+    lsp_format = "fallback",
+  })
+end, { desc = "Format File" })
 
 -- quit
 keymap("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
